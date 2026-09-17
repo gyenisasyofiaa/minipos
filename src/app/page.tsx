@@ -1,13 +1,6 @@
-//import { Header } from "@/components/layout/header"; 
-//import { Sidebar } from "@/components/layout/sidebar"; 
-//import Image from "next/image";
-//import Dashboardlayout from "./(dashboard)/layout";
+import { redirect } from 'next/navigation'
+import React from 'react'
+
 export default function Home() {
-  return (
-    <main>
-      <h1>MiniPOS</h1>
-      <div>
-      </div>
-    </main>
-  );
+  redirect ("/dashboard")
 }
