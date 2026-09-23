@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 MiniPOS — Aplikasi Kasir Digital (Point of Sale)
 
-## Getting Started
+**MiniPOS** adalah aplikasi sistem kasir berbasis web modern yang dibangun menggunakan **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, dan **Firebase Firestore** untuk mendukung pengelolaan produk, autentikasi pengguna, serta pencatatan transaksi penjualan secara real-time.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📂 Struktur Proyek & Penjelasan Modul
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Berikut adalah rincian direktori dan modul koding yang digunakan di dalam proyek ini:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* **`src/app/`** — Pusat routing dan halaman utama aplikasi (menggunakan Next.js App Router):
+  * `(auth)/login/` — Modul halaman masuk (*login*) pengguna.
+  * `(dashboard)/dashboard/` — Halaman utama ringkasan sistem kasir.
+  * `(dashboard)/products/` — Manajemen daftar produk lengkap dengan fitur tambah (`/create`) dan ubah data (`/[id]/edit`).
+  * `(dashboard)/transactions/` — Modul kasir utama untuk membuat transaksi baru (`/new`) dan melihat detail riwayat transaksi (`/[id]`).
+* **`src/components/`** — Kumpulan komponen antarmuka (*UI components*) yang dapat digunakan kembali:
+  * `auth/` — Komponen penjaga rute autentikasi (`auth-guard.tsx`).
+  * `layout/` — Komponen kerangka tata letak aplikasi seperti `Header.tsx` dan `Sidebar.tsx`.
+  * `products/` — Komponen formulir produk (`product-form.tsx`).
+  * `ui/` — Komponen dasar pendukung seperti tombol (`Button.tsx`), input (`input.tsx`), dan status kosong (`empty-state.tsx`).
+* **`src/contexts/`** — Pengelola *state* global aplikasi, termasuk konteks autentikasi pengguna (`auth-context.tsx`).
+* **`src/lib/`** — Konfigurasi pustaka eksternal dan utilitas penyimpanan lokal, termasuk inisialisasi koneksi `firebase.ts` dan `product-storage.ts`.
+* **`src/services/`** — Lapisan layanan bisnis untuk komunikasi data asinkron dengan database backend (`product.service.ts` dan `transaction.service.ts`).
+* **`src/types/`** — Definisi tipe data TypeScript secara global untuk entitas keranjang belanja (`cart.ts`), produk (`product.ts`), dan transaksi (`transaction.ts`).
+* **`src/utils/`** — Fungsi pembantu (*helper*) untuk pemformatan mata uang (`currency.ts`), tanggal (`date.ts`), format data, nomor nota/invoice, dan penyimpanan lokal.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠️ Teknologi Utama
 
-To learn more about Next.js, take a look at the following resources:
+* **Framework:** Next.js (App Router)
+* **Bahasa:** TypeScript
+* **Styling:** Tailwind CSS
+* **Database & Auth:** Firebase Firestore
+* **Konfigurasi Tambahan:** `.env.example`, `firestore.rules`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Panduan Memulai (Local Setup)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Kloning Repositori & Instalasi Dependensi**
+   Jalankan perintah berikut di terminal Anda untuk menginstal semua modul yang diperlukan:
+   ```bash
+   npm install
